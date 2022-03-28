@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 
+import Button from '@mui/material/Button';
 import TextField from "@mui/material/TextField";
 
 function App() {
@@ -60,9 +61,9 @@ function App() {
         margin='normal'
       />
       <div className='actions'>
-        <button id="btnCreateFile" onClick={handleClick}>
+        <Button variant="outlined" id="btnCreateFile" onClick={handleClick}>
           Generate File
-        </button>
+        </Button>
         <a
           download="info.txt"
           href="alt"
