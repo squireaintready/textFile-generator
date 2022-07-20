@@ -6,6 +6,20 @@
   height: 100vh;
   color: white;
   background-color: rgb(243, 232, 190);
+  transform:
+    perspective(2000px)
+    translate3d(0px, -66px, 198px)
+    rotateX(-50deg)
+    scale3d(0.86, 0.75, 1)
+    translateY(50px);
+  border-radius: 25px;
+  will-change: transform;
+  transition: 0.4s ease-in-out transform;
+}
+
+.app:hover{
+  transform: scale3d(1, 1, 1);
+  background-color: whitesmoke;
 }
 
 .app__form{
