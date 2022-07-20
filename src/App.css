@@ -4,7 +4,6 @@
 
 .app{
   height: 100vh;
-  color: white;
   background-color: rgb(243, 232, 190);
   transform:
     perspective(2000px)
@@ -31,18 +30,16 @@
 
 
 .app__formActions{
-  display: grid;
-  place-items: center;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
   padding: 1rem;
 }
 
-.app__formActionsSelect{
-  height: 2rem;
-  width: 9.3rem;
+.app__formActionsSwitch{
   margin-bottom: 1rem;
-  font-size: smaller !important;
 }
 
-.app__formActionsSelectItem{
-  font-size: smaller !important;
+.MuiTypography-root{ 
+  font-size: .8rem !important;
 }
