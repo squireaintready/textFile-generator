@@ -15,5 +15,8 @@
   padding: 1rem;
 }
 
-#title{
+.select{
+  height: 2rem;
+  width: 9.3rem;
+  margin-bottom: 1rem;
 }
