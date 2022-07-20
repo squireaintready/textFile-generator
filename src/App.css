@@ -3,20 +3,32 @@
 }
 
 .app{
-  padding: 2.5rem;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
+  height: 100vh;
+  color: white;
+  background-color: rgb(243, 232, 190);
 }
 
-.actions{
+.app__form{
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  padding: 2.5rem;
+}
+
+
+.app__formActions{
   display: grid;
   place-items: center;
   padding: 1rem;
 }
 
-.select{
+.app__formActionsSelect{
   height: 2rem;
   width: 9.3rem;
   margin-bottom: 1rem;
+  font-size: smaller !important;
+}
+
+.app__formActionsSelectItem{
+  font-size: smaller !important;
 }

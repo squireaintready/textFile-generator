@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 
 import Button from "@mui/material/Button";
-import MenuItem from '@mui/material/MenuItem';
+import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import TextField from "@mui/material/TextField";
 
@@ -21,8 +21,12 @@ function App() {
   const generateTextFile = (text) => {
     let textFile = null;
     let data = new Blob([text], { text: "text/plain" });
-    if(text === ''){return alert("You are trying to save an empty document. Please enter characters in the field to continue.")}
-    
+    if (text === "") {
+      return alert(
+        "You are trying to save an empty document. Please enter characters in the field to continue."
+      );
+    }
+
     if (textFile !== null) {
       window.URL.revokeObjectURL(textFile);
     }
@@ -47,50 +51,60 @@ function App() {
 
   const handleDocChange = (e) => {
     e.preventDefault();
-    setDocType(e.target.value)
-  }
+    setDocType(e.target.value);
+  };
 
   return (
     <div className="app">
-      <TextField
-        label="Document title"
-        value={title}
-        onChange={handleTitleChange}
-        variant="standard"
-        margin="dense"
-      />
-      <TextField
-        label="Document text"
-        value={text}
-        onChange={handleTextChange}
-        variant="outlined"
-        margin="normal"
-        multiline
-      />
-      <div className="actions">
-        <Select
-          value={docType}
-          label="Doc Type"
-          onChange={handleDocChange}
-          autoWidth="true"
-          className='select'
-          variant='standard'
-        >
-          <MenuItem value='txt'>TEXT</MenuItem>
-          <MenuItem value='json'>JSON</MenuItem>
-        </Select>
-        <Button variant="outlined" id="btnCreateFile" onClick={handleClickGenerateFile}>
-          Generate File
-        </Button>
-        <a
-          download="info.txt"
-          href="alt"
-          style={{ display: "none" }}
-          onClick={hideDownload}
-        >
-          Download
-        </a>
-      </div>
+      <form className="app__form">
+        <TextField
+          label="Document title"
+          value={title}
+          onChange={handleTitleChange}
+          variant="standard"
+          margin="dense"
+          color="secondary"
+        />
+        <TextField
+          label="Document text"
+          value={text}
+          onChange={handleTextChange}
+          variant="outlined"
+          margin="normal"
+          color="secondary"
+          multiline
+          
+        />
+        <div className="app__formActions">
+          <Select
+            value={docType}
+            label="Doc Type"
+            onChange={handleDocChange}
+            autoWidth="true"
+            className="app__formActionsSelect"
+            variant="standard"
+            color="secondary"
+          >
+            <MenuItem className="app__formActionsSelectItem" value="txt">TEXT</MenuItem>
+            <MenuItem className="app__formActionsSelectItem" value="json">JSON</MenuItem>
+          </Select>
+          <Button
+            variant="outlined"
+            color="secondary"
+            onClick={handleClickGenerateFile}
+          >
+            Generate File
+          </Button>
+          <a
+            download="info.txt"
+            href="alt"
+            style={{ display: "none" }}
+            onClick={hideDownload}
+          >
+            Download
+          </a>
+        </div>
+      </form>
     </div>
   );
 }
