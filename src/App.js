@@ -26,7 +26,6 @@ function App() {
         "You are trying to save an empty document. Please enter characters in the field to continue."
       );
     }
-
     if (textFile !== null) {
       window.URL.revokeObjectURL(textFile);
     }
@@ -98,6 +97,7 @@ function App() {
           <a
             download="info.txt"
             href="alt"
+            id="downloadFile"
             style={{ display: "none" }}
             onClick={hideDownload}
           >
