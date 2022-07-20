@@ -15,7 +15,7 @@ function App() {
   const handleClickGenerateFile = () => {
     let link = document.getElementById("downloadFile");
     link.href = generateTextFile(text);
-    link.download = `${saveAsText ? title : `${title}.json`}`;
+    link.download = `${saveAsText ? `${title}.txt` : `${title}.json`}`;
     link.style.display = "inline-block";
   };
 
