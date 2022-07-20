@@ -2,19 +2,20 @@ import React, { useState } from "react";
 import "./App.css";
 
 import Button from "@mui/material/Button";
-import MenuItem from "@mui/material/MenuItem";
-import Select from "@mui/material/Select";
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Switch from '@mui/material/Switch';
 import TextField from "@mui/material/TextField";
 
+
 function App() {
+  const [saveAsText, setSaveAsText] = useState('true')
   const [text, setText] = useState("");
   const [title, setTitle] = useState("");
-  const [docType, setDocType] = useState("");
 
   const handleClickGenerateFile = () => {
     let link = document.getElementById("downloadFile");
     link.href = generateTextFile(text);
-    link.download = `${title}.${docType}`;
+    link.download = `${saveAsText ? title : `${title}.json`}`;
     link.style.display = "inline-block";
   };
 
@@ -33,6 +34,10 @@ function App() {
     return textFile;
   };
 
+  const toggleSaveAsText = () => {
+    setSaveAsText(prev => setSaveAsText(!prev))
+  }
+
   const hideDownload = () => {
     let link = document.getElementById("downloadFile");
     setTimeout(() => {
@@ -46,11 +51,6 @@ function App() {
 
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
-  };
-
-  const handleDocChange = (e) => {
-    e.preventDefault();
-    setDocType(e.target.value);
   };
 
   return (
@@ -75,18 +75,12 @@ function App() {
           
         />
         <div className="app__formActions">
-          <Select
-            value={docType}
-            label="Doc Type"
-            onChange={handleDocChange}
-            autoWidth="true"
-            className="app__formActionsSelect"
-            variant="standard"
-            color="secondary"
-          >
-            <MenuItem className="app__formActionsSelectItem" value="txt">TEXT</MenuItem>
-            <MenuItem className="app__formActionsSelectItem" value="json">JSON</MenuItem>
-          </Select>
+          <FormControlLabel
+            control={<Switch color="secondary" checked={saveAsText} onChange={toggleSaveAsText}/>}
+            label={`file format .${saveAsText ? "text" : "json"}`}
+            labelPlacement="bottom"
+            className="app__formActionsSwitch"
+          />
           <Button
             variant="outlined"
             color="secondary"
