@@ -1,17 +1,20 @@
 import React, { useState } from "react";
 import "./App.css";
 
-import Button from '@mui/material/Button';
+import Button from "@mui/material/Button";
+import MenuItem from '@mui/material/MenuItem';
+import Select from "@mui/material/Select";
 import TextField from "@mui/material/TextField";
 
 function App() {
   const [text, setText] = useState("");
-  const [title, setTitle] = useState('')
+  const [title, setTitle] = useState("");
+  const [docType, setDocType] = useState("");
 
-  const handleClick = () => {
+  const handleClickGenerateFile = () => {
     let link = document.getElementById("downloadFile");
     link.href = generateTextFile(text);
-    link.download = title;
+    link.download = `${title}.${docType}`;
     link.style.display = "inline-block";
   };
 
@@ -29,8 +32,8 @@ function App() {
     let link = document.getElementById("downloadFile");
     setTimeout(() => {
       link.style.display = "none";
-    }, 1500)
-  }
+    }, 1500);
+  };
 
   const handleTextChange = (e) => {
     setText(e.target.value);
@@ -39,6 +42,11 @@ function App() {
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
   };
+
+  const handleDocChange = (e) => {
+    e.preventDefault();
+    setDocType(e.target.value)
+  }
 
   return (
     <div className="app">
@@ -58,16 +66,25 @@ function App() {
         value={text}
         onChange={handleTextChange}
         variant="outlined"
-        margin='normal'
+        margin="normal"
       />
-      <div className='actions'>
-        <Button variant="outlined" id="btnCreateFile" onClick={handleClick}>
+      <div className="actions">
+        <Select
+          value={docType}
+          label="Doc Type"
+          onChange={handleDocChange}
+          autoWidth="true"
+          className='select'
+        >
+          <MenuItem value='txt'>TEXT</MenuItem>
+          <MenuItem value='json'>JSON</MenuItem>
+        </Select>
+        <Button variant="outlined" id="btnCreateFile" onClick={handleClickGenerateFile}>
           Generate File
         </Button>
         <a
           download="info.txt"
           href="alt"
-          id="downloadFile"
           style={{ display: "none" }}
           onClick={hideDownload}
         >
