@@ -51,22 +51,19 @@ function App() {
   return (
     <div className="app">
       <TextField
-        id="title"
-        label="Title"
+        label="Document title"
         value={title}
         onChange={handleTitleChange}
         variant="standard"
         margin="dense"
       />
       <TextField
-        id="dummyText"
-        fullWidth
-        multiline
-        label="Enter New Text"
+        label="Document text"
         value={text}
         onChange={handleTextChange}
         variant="outlined"
         margin="normal"
+        multiline
       />
       <div className="actions">
         <Select
@@ -75,6 +72,7 @@ function App() {
           onChange={handleDocChange}
           autoWidth="true"
           className='select'
+          variant='standard'
         >
           <MenuItem value='txt'>TEXT</MenuItem>
           <MenuItem value='json'>JSON</MenuItem>
