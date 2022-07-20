@@ -21,6 +21,8 @@ function App() {
   const generateTextFile = (text) => {
     let textFile = null;
     let data = new Blob([text], { text: "text/plain" });
+    if(text === ''){return alert("You are trying to save an empty document. Please enter characters in the field to continue.")}
+    
     if (textFile !== null) {
       window.URL.revokeObjectURL(textFile);
     }
